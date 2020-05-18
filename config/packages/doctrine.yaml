@@ -1,0 +1,25 @@
+doctrine:
+    dbal:
+        connections:
+            default:
+                driver:   pdo_pgsql
+                host:     "%env(DB_HOST)%"
+                port:     "%env(DB_PORT)%"
+                dbname:   "%env(DB_NAME)%"
+                user:     "%env(DB_USER)%"
+                password: "%env(DB_PASSWORD)%"
+                sslmode:  "%env(DB_SSLMODE)%"
+                server_version: "%env(DB_SERVER_VERSION)%"
+                charset:  UTF8
+
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
